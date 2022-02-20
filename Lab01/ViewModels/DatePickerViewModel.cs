@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Documents;
 using ProgrammingInCSharp.Lab01.Models;
 using ProgrammingInCSharp.Lab01.Tools;
 
@@ -39,7 +38,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             set
             {
                 _user.Age = value;
-                OnPropertyChanged("Age");
+                OnPropertyChanged();
             }
         }
         public string WestZodiac
@@ -48,7 +47,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             set
             {
                 _user.WestZodiac = value;
-                OnPropertyChanged("WestZodiac");
+                OnPropertyChanged();
             }
         }
 
@@ -58,7 +57,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             set
             {
                 _user.ChineseZodiac = value;
-                OnPropertyChanged("ChineseZodiac");
+                OnPropertyChanged();
             }
         }
 
@@ -73,7 +72,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
 
         private void Calculate()
         {
-            if (string.IsNullOrWhiteSpace(_user.Birthdate.ToString()))
+            if (_user.Birthdate == null)
             {
                 MessageBox.Show($"Date field is empty!");
                 makeEmpty();
@@ -123,100 +122,32 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
 
         private string WesternZodiacSign(int day, int month)
         {
-            if (month == 12)
+            switch (month)
             {
-
-                if (day < 22)
-                    return "Sagittarius";
-                else
-                    return "Capricorn";
-            }
-
-            else if (month == 1)
-            {
-                if (day < 20)
-                    return "Capricorn";
-                else
-                    return "Aquarius";
-            }
-
-            else if (month == 2)
-            {
-                if (day < 19)
-                    return "Aquarius";
-                else
-                    return "Pisces";
-            }
-
-            else if (month == 3)
-            {
-                if (day < 21)
-                    return "Pisces";
-                else
-                    return "Aries";
-            }
-            else if (month == 4)
-            {
-                if (day < 20)
-                    return "Aries";
-                else
-                    return "Taurus";
-            }
-
-            else if (month == 5)
-            {
-                if (day < 21)
-                    return "Taurus";
-                else
-                    return "Gemini";
-            }
-
-            else if (month == 6)
-            {
-                if (day < 21)
-                    return "Gemini";
-                else
-                    return "Cancer";
-            }
-
-            else if (month == 7)
-            {
-                if (day < 23)
-                    return "Cancer";
-                else
-                    return "Leo";
-            }
-
-            else if (month == 8)
-            {
-                if (day < 23)
-                    return "Leo";
-                else
-                    return "Virgo";
-            }
-
-            else if (month == 9)
-            {
-                if (day < 23)
-                    return "Virgo";
-                else
-                    return "Libra";
-            }
-
-            else if (month == 10)
-            {
-                if (day < 23)
-                    return "Libra";
-                else
-                    return "Scorpio";
-            }
-
-            else 
-            {
-                if (day < 22)
-                    return "Scorpio";
-                else
-                    return "Sagittarius";
+                case 12:
+                    return day < 22 ? "Sagittarius" : "Capricorn";
+                case 1:
+                    return day < 20 ? "Capricorn" : "Aquarius";
+                case 2:
+                    return day < 19 ? "Aquarius" : "Pisces";
+                case 3:
+                    return day < 21 ? "Pisces" : "Aries";
+                case 4:
+                    return day < 20 ? "Aries" : "Taurus";
+                case 5:
+                    return day < 21 ? "Taurus" : "Gemini";
+                case 6:
+                    return day < 21 ? "Gemini" : "Cancer";
+                case 7:
+                    return day < 23 ? "Cancer" : "Leo";
+                case 8:
+                    return day < 23 ? "Leo" : "Virgo";
+                case 9:
+                    return day < 23 ? "Virgo" : "Libra";
+                case 10:
+                    return day < 23 ? "Libra" : "Scorpio";
+                default:
+                    return day < 22 ? "Scorpio" : "Sagittarius";
             }
         }
 
