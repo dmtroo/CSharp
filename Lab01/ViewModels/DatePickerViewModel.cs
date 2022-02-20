@@ -83,17 +83,18 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             int age = CountAge(_user.Birthdate);
             if (age < 0 || age > 135)
             {
-                MessageBox.Show($"Wrong birthdate!");
                 makeEmpty();
+                MessageBox.Show($"Wrong birthdate!");
                 return;
             }
+
+            Age = age == 0 ? "less than 1 year" : age.ToString();
 
             if (IsBirthday(_user.Birthdate))
             {
                 MessageBox.Show($"Happy birthday!!!");
             }
 
-            Age = age == 0 ? "less than 1 year" : age.ToString();
             WestZodiac = WesternZodiacSign(_user.Birthdate.Value.Day, _user.Birthdate.Value.Month);
             ChineseZodiac = ChineseZodiacSign(_user.Birthdate.Value.Year);
         }

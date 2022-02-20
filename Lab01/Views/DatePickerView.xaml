@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:tools="clr-namespace:ProgrammingInCSharp.Lab01.Tools.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="110" d:DesignWidth="400">
+             d:DesignHeight="250" d:DesignWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
