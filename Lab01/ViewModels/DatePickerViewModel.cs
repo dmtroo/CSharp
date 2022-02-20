@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Documents;
 using ProgrammingInCSharp.Lab01.Models;
 using ProgrammingInCSharp.Lab01.Tools;
 
@@ -75,6 +76,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             if (string.IsNullOrWhiteSpace(_user.Birthdate.ToString()))
             {
                 MessageBox.Show($"Date field is empty!");
+                makeEmpty();
                 return;
             }
 
@@ -82,6 +84,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             if (age < 0 || age > 135)
             {
                 MessageBox.Show($"Wrong birthdate!");
+                makeEmpty();
                 return;
             }
 
@@ -94,6 +97,14 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             WestZodiac = WesternZodiacSign(_user.Birthdate.Value.Day, _user.Birthdate.Value.Month);
             ChineseZodiac = ChineseZodiacSign(_user.Birthdate.Value.Year);
         }
+
+        private void makeEmpty()
+        {
+            Age = "";
+            WestZodiac = "";
+            ChineseZodiac = "";
+        }
+
         #endregion
 
         private int CountAge(DateTime? birthDate)
