@@ -11,7 +11,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
     class DatePickerViewModel : INotifyPropertyChanged
     {
         #region Fields
-        private User _user = new User();
+        private User _user = new();
         private string[] animals = { "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig" };
         private string[] elements = { "Wood", "Fire", "Earth", "Metal", "Water" };
         #region Commands
@@ -76,14 +76,14 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             if (string.IsNullOrWhiteSpace(_user.Birthdate.ToString()))
             {
                 MessageBox.Show($"Date field is empty!");
-                makeEmpty();
+                MakeEmpty();
                 return;
             }
 
             int age = CountAge(_user.Birthdate);
             if (age < 0 || age > 135)
             {
-                makeEmpty();
+                MakeEmpty();
                 MessageBox.Show($"Wrong birthdate!");
                 return;
             }
@@ -99,7 +99,7 @@ namespace ProgrammingInCSharp.Lab01.ViewModels
             ChineseZodiac = ChineseZodiacSign(_user.Birthdate.Value.Year);
         }
 
-        private void makeEmpty()
+        private void MakeEmpty()
         {
             Age = "";
             WestZodiac = "";
